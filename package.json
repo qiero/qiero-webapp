@@ -1,0 +1,27 @@
+{
+    "name": "qiero-webapp",
+    "version": "0.0.1",
+    "description": "A tournament manager web application",
+    "homepage": "https://github.com/qiero/qiero-webapp",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/qiero/qiero-webapp.git"
+    },
+    "author": "Tomasz Guzialek",
+    "license": "Apache License 2.0",
+    "bugs": {
+        "url": "https://github.com/qiero/qiero-webapp/issues"
+    },
+    "main": "index.js",
+    "scripts": {
+        "start": "hoodie"
+    },
+    "dependencies": {
+        "hoodie": "^11.0.0"
+    },
+    "hoodie": {
+        "plugins": [
+            "hoodie-plugin-appconfig"
+        ]
+    }
+}
