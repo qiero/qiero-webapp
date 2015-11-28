@@ -5,10 +5,16 @@
     
     <title>Qiero - a tournament manager</title>
 </head>
-<body ng-controller="IndexController as indexCtrl">
-    Hello {{indexCtrl.helloText}}!
+<body>
+    
+    <div ng-view>
+        
+    </div>
     
     <script src="../node_modules/angular/angular.js" type="text/javascript"></script>
+    <script src="../node_modules/angular-route/angular-route.js" type="text/javascript"></script>
+    <script src="main/MainController.js"></script>
+    <script src="auth/LoginController.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
