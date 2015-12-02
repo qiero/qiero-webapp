@@ -1,6 +1,9 @@
-# Dependency directory
+# Dependency directory for NPM
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
+
+# Dependency directory for Bower
+bower_components
 
 # Mac OS X
 .DS_Store

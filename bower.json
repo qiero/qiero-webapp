@@ -1,0 +1,18 @@
+{
+  "name": "qiero-webapp",
+  "description": "A tournament manager web application",
+  "main": "app/index.html",
+  "authors": [
+    "Tomasz Guzialek"
+  ],
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/qiero/qiero-webapp",
+  "moduleType": [],
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.8",
+    "angular-route": "~1.4.8",
+    "angular-pouchdb": "~4.0.0",
+    "pouchdb-authentication": "~0.4.2"
+  }
+}

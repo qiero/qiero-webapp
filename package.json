@@ -14,8 +14,6 @@
   },
   "main": "app/index.html",
   "dependencies": {
-    "angular": "^1.4.8",
-    "angular-route": "^1.4.8"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
