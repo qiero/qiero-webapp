@@ -4,3 +4,6 @@ node_modules
 
 # Mac OS X
 .DS_Store
+
+dist
+data
