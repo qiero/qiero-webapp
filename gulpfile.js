@@ -4,7 +4,7 @@ var source = require('vinyl-source-stream')
 var exec = require('child_process').exec
 
 gulp.task('watch', function() {
-    gulp.watch('./app/*.js', ['browserify']);
+    return gulp.watch('./app/**/*.js', ['browserify']);
 });
 
 gulp.task('hoodie-start', ['copy-static', 'browserify'],  function() {
