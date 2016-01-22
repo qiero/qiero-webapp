@@ -1,10 +1,10 @@
 var angular = require('angular');
 var ngRoute = require('angular-route');
 
-var app = angular.module('qiero-webapp', ['ngRoute', 'main', 'auth']);
+var main = require('./main');
+var auth = require('./auth');  
 
-require('./main');
-require('./auth');   
+var app = angular.module('qiero-webapp', ['ngRoute', main.name, auth.name]); 
  
 app.config([
     '$routeProvider', function($routeProvider) {
