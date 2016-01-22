@@ -23,7 +23,6 @@
     "hoodie-server": "^4.0.2"
   },
   "bundleDependencies": [
-    "hoodie-plugin-angularjs",
     "hoodie-plugin-appconfig",
     "hoodie-plugin-email",
     "hoodie-plugin-users",
