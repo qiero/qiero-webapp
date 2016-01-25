@@ -16,18 +16,13 @@
   "dependencies": {
     "angular": "^1.4.8",
     "angular-route": "^1.4.8",
+    "hoodie-client-store": "^4.1.0",
     "hoodie-plugin-angularjs": "^0.1.1",
     "hoodie-plugin-appconfig": "^2.0.1",
     "hoodie-plugin-email": "^1.0.0",
     "hoodie-plugin-users": "^2.2.2",
     "hoodie-server": "^4.0.2"
   },
-  "bundleDependencies": [
-    "hoodie-plugin-appconfig",
-    "hoodie-plugin-email",
-    "hoodie-plugin-users",
-    "hoodie-server"
-  ],
   "devDependencies": {
     "browserify": "^13.0.0",
     "gulp": "^3.9.0",
