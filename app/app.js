@@ -10,12 +10,12 @@ app.config([
     '$routeProvider', function($routeProvider) {
         
         $routeProvider.when('/login', {
-            templateUrl: 'auth/login.html',
+            templateUrl: 'auth/index.html',
             controller: 'LoginController'
         });
         
         $routeProvider.otherwise({
-            templateUrl: 'main/main.html',
+            templateUrl: 'main/index.html',
             controller: 'MainController'
         });
         
