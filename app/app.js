@@ -1,23 +1,23 @@
-var angular = require('angular');
-var ngRoute = require('angular-route');
+(function() {
 
-var main = require('./main');
-var auth = require('./auth');  
-
-var app = angular.module('qiero-webapp', ['ngRoute', main.name, auth.name]); 
+    var app = angular.module('qiero-webapp', ['ngRoute', 'hoodie', 'main', 'auth']); 
  
-app.config([
-    '$routeProvider', function($routeProvider) {
+    app.config([
+        '$routeProvider', 'hoodieProvider', function($routeProvider, hoodieProvider) {
         
-        $routeProvider.when('/login', {
-            templateUrl: 'auth/index.html',
-            controller: 'LoginController'
-        });
+            $routeProvider.when('/login', {
+                templateUrl: 'auth/index.html',
+                controller: 'LoginController'
+            });
         
-        $routeProvider.otherwise({
-            templateUrl: 'main/index.html',
-            controller: 'MainController'
-        });
+            $routeProvider.otherwise({
+                templateUrl: 'main/index.html',
+                controller: 'MainController'
+            });
+            
+            hoodieProvider.url('http://localhost:6001');
         
-    }
-]);
+        }
+    ]);
+
+})();
