@@ -1,14 +1,12 @@
-var gulp = require('gulp')
-var browserify = require('browserify')
-var source = require('vinyl-source-stream')
-var exec = require('child_process').exec
+var gulp = require('gulp');
+var exec = require('child_process').exec;
 
 gulp.task('watch', function() {
-    gulp.watch('./app/**/*.js', ['browserify']);
     gulp.watch('./app/**/*.html', ['copy-static']);
+    gulp.watch('./app/**/*.js', ['copy-static']);
 });
 
-gulp.task('hoodie-start', ['copy-static', 'browserify'],  function() {
+gulp.task('hoodie-start', ['copy-static', 'copy-node-modules'],  function() {
   var child = exec('node ./node_modules/hoodie-server/bin/start --www dist --custom-ports 6001,6002,6003');
   child.stdout.on('data', function(data) {
       console.log(data);
@@ -19,16 +17,14 @@ gulp.task('hoodie-start', ['copy-static', 'browserify'],  function() {
   return child;
 });
 
-gulp.task('browserify', function() {
-    return browserify('./app/app.js')
-        .bundle()
-        .pipe(source('qiero-browserified.js'))
-        .pipe(gulp.dest('./dist'));
+gulp.task('copy-static', function() {
+    return gulp.src(['./app/**/*.html', './app/**/*.js'])
+        .pipe(gulp.dest('./dist')); 
 });
 
-gulp.task('copy-static', function() {
-    return gulp.src(['./app/**/*.html'])
-        .pipe(gulp.dest('./dist')); 
+gulp.task('copy-node-modules', function() {
+    return gulp.src(['./node_modules/**'])
+        .pipe(gulp.dest('./dist/node_modules')); 
 });
 
 gulp.task('default', ['hoodie-start', 'watch']);
