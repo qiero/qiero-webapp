@@ -4,6 +4,7 @@ var exec = require('child_process').exec;
 gulp.task('watch', function() {
     gulp.watch('./app/**/*.html', ['copy-static']);
     gulp.watch('./app/**/*.js', ['copy-static']);
+    gulp.watch('./app/manifest.appcache', ['copy-static']);
 });
 
 gulp.task('hoodie-start', ['copy-static', 'copy-node-modules'],  function() {
@@ -18,8 +19,11 @@ gulp.task('hoodie-start', ['copy-static', 'copy-node-modules'],  function() {
 });
 
 gulp.task('copy-static', function() {
-    return gulp.src(['./app/**/*.html', './app/**/*.js'])
-        .pipe(gulp.dest('./dist')); 
+    return gulp.src([
+        './app/**/*.html',
+        './app/**/*.js',
+        './app/manifest.appcache'
+    ]).pipe(gulp.dest('./dist')); 
 });
 
 gulp.task('copy-node-modules', function() {
