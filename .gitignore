@@ -5,5 +5,11 @@ node_modules
 # Mac OS X
 .DS_Store
 
+# Build and operational data
 dist
 data
+
+# NetBeans project files
+nbproject
+.project
+.settings
