@@ -22,5 +22,18 @@
         
         }
     ]);
+    
+    app.controller('AppController', ['$scope', 'userService', 
+        function($scope, userService) {
+        
+        $scope.isLoggedIn = function() {
+            return userService.isLoggedIn();
+        };
+        
+        $scope.logout = function() {
+            userService.logout();
+        };
+        
+    }]);
 
 })();
