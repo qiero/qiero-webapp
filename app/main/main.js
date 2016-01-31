@@ -1,10 +1,9 @@
 (function() {
 
     angular.module('main', [])
-        .controller('MainController', function() {
+        .controller('MainController', ['$scope', function($scope) {
             console.log("Entered MainController");
-            this.helloText = "Qiero";
-        }
-    );
+            $scope.helloText = "Qiero";
+        }]);
 
 })();
