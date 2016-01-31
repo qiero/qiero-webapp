@@ -1,7 +1,12 @@
-<div ng-controller="LoginController as loginCtrl">
-    <form>
-        <input type="text" id="username" />
-        <input type="password" id="password" />
-        <input type="submit" value="Login" />
+<div>
+    <form class="loginForm">
+        
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" ng-model="username" />
+        
+        <label for="username">Password:</label>
+        <input type="password" id="password" name="password" ng-model="password"/>
+        
+        <input type="submit" value="Login" ng-click="login()" />
     </form>
 </div>
