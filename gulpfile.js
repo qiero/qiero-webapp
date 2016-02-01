@@ -1,6 +1,9 @@
 var gulp = require('gulp');
 var exec = require('child_process').exec;
 var del = require('del');
+var file = require('gulp-file');
+var fs = require('fs');
+var uuid = require('uuid');
 
 /* Does not watch for changes in node_modules! */ 
 gulp.task('watch', function() {
@@ -15,7 +18,15 @@ gulp.task('clean', function() {
     return del(['dist']);
 });
 
-gulp.task('hoodie-start', ['build'],  function() {
+gulp.task('manifest', function() {
+    var manifestContent = fs.readFileSync('./app/manifest.appcache', "utf8");
+    manifestContent = manifestContent + '\n// Manifest version hash: ' + uuid.v1();
+    
+    return file('manifest.appcache', manifestContent, { src: true })
+            .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('hoodie-start', ['copy-static', 'manifest', 'copy-node-modules'],  function() {
   var child = exec('node ./node_modules/hoodie-server/bin/start --www dist --custom-ports 6001,6002,6003');
   child.stdout.on('data', function(data) {
       console.log(data);
@@ -26,11 +37,10 @@ gulp.task('hoodie-start', ['build'],  function() {
   return child;
 });
 
-gulp.task('copy-static', function() {
+gulp.task('copy-static', ['manifest'], function() {
     return gulp.src([
         './app/**/*.html',
-        './app/**/*.js',
-        './app/manifest.appcache'
+        './app/**/*.js'
     ]).pipe(gulp.dest('./dist')); 
 });
 
