@@ -25,9 +25,14 @@
     "jquery": "^2.2.0"
   },
   "devDependencies": {
-    "gulp": "^3.9.0",
     "del": "^2.2.0",
+    "gulp": "^3.9.0",
     "gulp-file": "^0.2.0",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.19",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.7",
     "uuid": "^2.0.1"
   },
   "hoodie": {
