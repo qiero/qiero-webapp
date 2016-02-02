@@ -4,11 +4,12 @@ var del = require('del');
 var file = require('gulp-file');
 var fs = require('fs');
 var uuid = require('uuid');
+var Server = require('karma').Server;
 
 /* Does not watch for changes in node_modules! */ 
 gulp.task('watch', function() {
     gulp.watch('./app/**/*.html', ['copy-static']);
-    gulp.watch('./app/**/*.js', ['copy-static']);
+    gulp.watch('./app/**/*.js', ['copy-static', 'test']);
     gulp.watch('./app/manifest.appcache', ['copy-static']);
 });
 
@@ -47,6 +48,13 @@ gulp.task('copy-static', ['manifest'], function() {
 gulp.task('copy-node-modules', function() {
     return gulp.src(['./node_modules/**'])
         .pipe(gulp.dest('./dist/node_modules')); 
+});
+
+gulp.task('test', function (done) {
+  new Server({
+    configFile: __dirname + '/test/karma.conf.js',
+    singleRun: true
+  }, done).start();
 });
 
 gulp.task('default', ['hoodie-start', 'watch']);
