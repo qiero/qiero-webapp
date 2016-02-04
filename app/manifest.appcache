@@ -1,17 +1,10 @@
 CACHE MANIFEST
 
 CACHE:
-app.js
+qiero-webapp.js
 index.html
-auth/auth.js
 auth/index.html
 main/index.html
-main/main.js
-node_modules/angular/angular.js
-node_modules/angular-route/angular-route.js
-node_modules/jquery/dist/jquery.js
-_api/_files/hoodie.js
-node_modules/appcache-nanny/appcache-nanny.js
 
 FALLBACK:
 / /

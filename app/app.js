@@ -1,4 +1,11 @@
 (function() {
+    
+    var angular = require('angular');
+    require('./hoodie-plugin-angularjs');
+    require('angular-route');
+    var appCacheNanny = require('appcache-nanny');
+    require('./main/main.js');
+    require('./auth/auth.js');
 
     var app = angular.module('qiero-webapp', ['ngRoute', 'hoodie', 'main', 'auth']); 
  
