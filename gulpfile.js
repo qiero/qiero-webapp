@@ -1,18 +1,27 @@
 var gulp = require('gulp');
+var browserify = require('browserify');
+var source = require('vinyl-source-stream')
 var exec = require('child_process').exec;
 var del = require('del');
 var file = require('gulp-file');
 var fs = require('fs');
 var uuid = require('uuid');
 
-/* Does not watch for changes in node_modules! */ 
 gulp.task('watch', function() {
     gulp.watch('./app/**/*.html', ['copy-static']);
-    gulp.watch('./app/**/*.js', ['copy-static']);
+    gulp.watch('./app/**/*.js', ['browserify']);
     gulp.watch('./app/manifest.appcache', ['copy-static']);
 });
 
-gulp.task('build', ['copy-static', 'copy-node-modules']);
+gulp.task('browserify', ['manifest'], function() {
+    return browserify('./app/app.js')
+        .bundle()
+        .pipe(source('qiero-webapp.js'))
+        .pipe(gulp.dest('./dist'));
+});
+
+
+gulp.task('build', ['copy-static', 'browserify']);
 
 gulp.task('clean', function() {
     return del(['dist']);
@@ -26,7 +35,7 @@ gulp.task('manifest', function() {
             .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('hoodie-start', ['copy-static', 'manifest', 'copy-node-modules'],  function() {
+gulp.task('hoodie-start', ['build'],  function() {
   var child = exec('node ./node_modules/hoodie-server/bin/start --www dist --custom-ports 6001,6002,6003');
   child.stdout.on('data', function(data) {
       console.log(data);
@@ -39,14 +48,8 @@ gulp.task('hoodie-start', ['copy-static', 'manifest', 'copy-node-modules'],  fun
 
 gulp.task('copy-static', ['manifest'], function() {
     return gulp.src([
-        './app/**/*.html',
-        './app/**/*.js'
+        './app/**/*.html'
     ]).pipe(gulp.dest('./dist')); 
-});
-
-gulp.task('copy-node-modules', function() {
-    return gulp.src(['./node_modules/**'])
-        .pipe(gulp.dest('./dist/node_modules')); 
 });
 
 gulp.task('default', ['hoodie-start', 'watch']);
