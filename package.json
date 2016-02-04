@@ -17,6 +17,7 @@
     "angular": "^1.4.8",
     "angular-route": "^1.4.8",
     "appcache-nanny": "^1.0.3",
+    "hoodie-client": "^3.2.2",
     "hoodie-plugin-angularjs": "^0.1.1",
     "hoodie-plugin-appconfig": "^2.0.1",
     "hoodie-plugin-email": "^1.0.0",
@@ -25,6 +26,7 @@
     "jquery": "^2.2.0"
   },
   "devDependencies": {
+    "browserify": "^13.0.0",
     "del": "^2.2.0",
     "gulp": "^3.9.0",
     "gulp-file": "^0.2.0",
@@ -33,7 +35,8 @@
     "karma-chrome-launcher": "^0.2.2",
     "karma-firefox-launcher": "^0.1.7",
     "karma-jasmine": "^0.3.7",
-    "uuid": "^2.0.1"
+    "uuid": "^2.0.1",
+    "vinyl-source-stream": "^1.1.0"
   },
   "hoodie": {
     "plugins": [
