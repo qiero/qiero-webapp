@@ -15,7 +15,7 @@
                 controller: 'MainController'
             });
             
-            hoodieProvider.url('http://localhost:6001');
+            hoodieProvider.url('http://127.0.0.1:6001');
             
             appCacheNanny.set('loaderPath', '/node_modules/appcache-nanny/appcache-loader.html')
             appCacheNanny.start();
